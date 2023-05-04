@@ -2,7 +2,10 @@
 
 import sys
 import re
+import argparse
     
+
+
 
 class Сondition_checker:
     
@@ -10,7 +13,11 @@ class Сondition_checker:
 
     
     def __init__ (self):   
-        file = sys.argv[-3]
+        parser = argparse.ArgumentParser(description='Find pattern in the text')
+        parser.add_argument('text', metavar = "t", type=str, help='Text')
+        parser.add_argument('instructions', metavar = "i", type=str, help='Insert text with instructions')
+        args = parser.parse_args()
+        #file = sys.argv[-3]
         with open(file, 'r') as f:
             self.lines = f.readlines()
         

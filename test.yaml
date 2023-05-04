@@ -1,0 +1,32 @@
+
+---
+patterns:
+  - name: user
+    pattern: ^USER
+  - name: command 
+    pattern: ^ [CMD|ENTRYPOINT]
+
+policies:
+  - name: UserMissed
+    operator: absent
+    pattern: user 
+    action: SendEmail
+  - name: UserPresent 
+    operator: present
+    pattern: user 
+    action: pass
+  - name: CMDMissed 
+    operator: absent 
+    pattern: command
+    action: SendEmail
+  - name: CMDMissed 
+    operator: present
+    pattern: command
+    condition: afterUser
+    action: SendEmail
+                               
+conditions:
+  - name: afterUser
+    term : after
+    condition_pattern: user
+...
