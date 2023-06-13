@@ -5,6 +5,7 @@ patterns:
     pattern: ^USER
   - name: command 
     pattern: ^ [CMD|ENTRYPOINT]
+    
 
 policies:
   - name: UserMissed

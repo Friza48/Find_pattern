@@ -1,0 +1,17 @@
+patterns:
+  pattern1:
+    pattern: ^USER
+    state: absent #none, present...
+    action: alarm #none, email, 
+
+  pattern2:
+    pattern: ^ [CMD|ENTRYPOINT]
+    state: none
+    action: none
+
+conditions:
+  cond_patterns: 
+    - ^USER
+    - ^[CMD|ENTRYPOINT]
+  term: direct #reverse
+

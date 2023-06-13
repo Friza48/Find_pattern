@@ -3,6 +3,7 @@
 import sys
 import re
 import argparse
+import yaml
     
 
 
@@ -20,7 +21,20 @@ class Сondition_checker:
         #file = sys.argv[-3]
         with open(file, 'r') as f:
             self.lines = f.readlines()
+        with open(instr, 'r') as r:
+            self.instr = yaml.safe_load(r)
         
+        self.pattern1 = self.instr['patterns']['pattern1']['pattern']
+        self.pattern1_op = self.instr['patterns']['pattern1']['operator']
+        self.pattern1_act = self.instr['patterns']['pattern1']['action']
+
+        self.pattern2 = self.instr['patterns']['pattern2']['pattern']
+        self.pattern2_op = self.instr['patterns']['pattern2']['operator']
+        self.pattern2_act = self.instr['patterns']['pattern2']['action']
+        
+        self.cond_patterns = self.instr['conditions']['cond_patterns']
+        self.term = self.instr['conditions']['term']
+
         self.index_pattern = list()
         
         # self.pattern = sys.argv[-2]
